@@ -1,0 +1,49 @@
+@charset "utf-8";
+
+.navbar_wrap{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100px;
+  background-color: #f26b4a;
+}
+
+.nav_area{
+  text-align: center;
+  margin-left: 30px;
+}
+
+.main_nav{
+  display: flex;
+}
+
+.nav_item{
+  font-size: 1.25em;
+  margin-right: 30px;
+}
+
+.dropdown_menu{
+  text-align: right;
+}
+
+.nav_btn{
+  font-size: 1.5em;
+  width: 170px;
+  height: 40px;
+  padding: 7px;
+  color: #fff;
+  background-color: #169398;
+  border-radius: 10px;
+  margin-left: 24px;
+}
+
+.nav_btn a{
+  display: inline-block;
+  vertical-align: middle;
+  height: 100%;
+}
+
+.size_b a{
+  font-size: 70%;
+}
+

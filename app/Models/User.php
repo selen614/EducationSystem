@@ -19,9 +19,16 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'name_kana',
         'email',
         'password',
+        'profile_image',
     ];
+
+    public function grade()
+        {
+            return $this->belongsTo(Grade::class, 'grade_id', 'id');
+        }
 
     /**
      * The attributes that should be hidden for serialization.
@@ -33,6 +40,10 @@ class User extends Authenticatable
         'remember_token',
     ];
 
+    protected $attributes = [
+        'grade_id' => 1, // デフォルト値を設定
+    ];
+
     /**
      * The attributes that should be cast.
      *
@@ -41,4 +52,5 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
 }

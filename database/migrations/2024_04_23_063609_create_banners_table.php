@@ -13,11 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('curriculum_progress', function (Blueprint $table) {
+        Schema::create('banners', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('curriculums_id')->constrained('curriculums');
-            $table->foreignId('users_id')->constrained('users');
-            $table->tinyInteger('clear_flg')->nullable(false);
+            $table->string('image');
             $table->timestamps();
         });
     }
@@ -29,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('curriculum_progress');
+        Schema::dropIfExists('banners');
     }
 };

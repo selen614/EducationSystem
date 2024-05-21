@@ -1,0 +1,68 @@
+@charset "utf-8";
+
+.card_header{
+  margin-top: 36px;
+  font-size: 2.5em;
+}
+
+.container{
+  text-align: center;
+  margin: 0 auto;
+}
+
+.center {
+  text-align: right;
+  width: fit-content;
+  margin: auto;
+}
+
+label{
+  display: inline-block;
+  margin-right: 10px;
+  width: 165px;
+  height: 30px;
+  margin-top: 6px;
+}
+
+input[type="password"],
+input[type="email"],
+input[type="text"]{
+  height: 30px;
+  width: 100%;
+  border: 1px solid #696969;
+  border-radius: 5px;
+  text-align: left;
+  padding: 10px 0 10px 20px;
+}
+
+.invalid_feedback{
+  color: red;
+}
+
+.col_md_6{
+  margin-top: 30px;
+  display: flex;
+}
+
+.btn_primary{
+  border-radius: 5px;
+  margin: 50px 30px 0 30px;
+  padding: 5px 30px 5px 30px;
+}
+
+.register_btn{
+  text-align: right;
+}
+
+.btn1{
+  margin-top: 12px;
+  margin-right: 12px;
+  color: #696969;
+}
+
+.btn2{
+  font-size: 1.5rem;
+  color: #fff;
+  background-color: #ff7f50;
+  border: 1px solid #d2691e;
+}

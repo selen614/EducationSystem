@@ -13,11 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('curriculum_progress', function (Blueprint $table) {
+        Schema::create('curriculums', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('curriculums_id')->constrained('curriculums');
-            $table->foreignId('users_id')->constrained('users');
-            $table->tinyInteger('clear_flg')->nullable(false);
+            $table->string('title');
+            $table->string('thumbnail')->nullable();
+            $table->longText('description')->nullable();
+            $table->mediumText('video_url')->nullable();
+            $table->tinyInteger('alway_delivery_flg')->unsigned()->comment('ON:1、OFF:0');
+            $table->integer('grade_id');
             $table->timestamps();
         });
     }
@@ -29,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('curriculum_progress');
+        Schema::dropIfExists('curriculums');
     }
 };

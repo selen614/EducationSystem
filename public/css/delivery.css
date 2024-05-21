@@ -1,0 +1,62 @@
+@charset "utf-8";
+
+.curriculums_wrapper{
+  margin: 0 auto;
+  width: 90%;
+}
+
+.return_btn{
+  margin: 10px auto 0 20px;
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.attendance_area{
+  display: flex;
+  height: 450px;
+  margin-top: 5px;
+}
+
+.video_area{
+  background-color: #c1c1c1;
+  width: 50%;
+  height: 100%;
+}
+
+video{
+  width: 100%;
+}
+
+.clear_area{
+  width: 50%;
+}
+
+.clear_btn{
+  margin-top: 25%;
+  font-size: 1.25rem;
+  color: #fff;
+  border-radius: 15px;
+  padding: 0.5rem 2.75rem;
+  background-color: #f26b4a;
+  border: 1px solid #d2691e;
+}
+
+.grade_area{
+  color: #fff;
+  margin-top:5px;
+  width: 180px;
+  text-align: left;
+  border-radius: 15px;
+  padding: 0.5rem 2.75rem;
+  background-color: #89e5f5;
+  border: 1px solid #707070;
+}
+
+.description_area{
+  margin-top: 12px;
+  text-align: left;
+}
+
+.description_title{
+  font-size: 2rem
+}
