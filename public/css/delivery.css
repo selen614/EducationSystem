@@ -13,18 +13,32 @@
 
 .attendance_area{
   display: flex;
-  height: 450px;
   margin-top: 5px;
 }
 
 .video_area{
-  background-color: #c1c1c1;
   width: 50%;
   height: 100%;
 }
 
 video{
   width: 100%;
+}
+
+.hidden_video{
+  background-color: #dcdcdc;
+  width: 50%;
+  height: 360px;
+  position: relative;
+}
+
+.hidden_video p{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform : translate(-50%,-50%);
+  transform : translate(-50%,-50%);
+  text-align: center;
 }
 
 .clear_area{
@@ -41,9 +55,32 @@ video{
   border: 1px solid #d2691e;
 }
 
+.no_press_area{
+  width: 50%;
+  height: 360px;
+  position: relative;
+}
+
+.no_press{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform : translate(-50%,-50%);
+  transform : translate(-50%,-50%);
+  text-align: center;
+  font-size: 1.25rem;
+  color: #696969;
+  border-radius: 15px;
+  padding: 0.5rem 2.75rem;
+  background-color: #dcdcdc;
+  border: 1px solid #a9a9a9;
+}
+
+
+
 .grade_area{
   color: #fff;
-  margin-top:5px;
+  margin-top:0.75rem;
   width: 180px;
   text-align: left;
   border-radius: 15px;

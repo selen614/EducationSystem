@@ -8,4 +8,21 @@ use Illuminate\Database\Eloquent\Model;
 class CurriculumProgress extends Model
 {
     use HasFactory;
+
+    public function user()
+        {
+            return $this->belongsTo(User::class, 'user_id', 'id');
+        }
+
+    protected $fillable = ['curriculum_id', 'user_id', 'clear_flg']; // ホワイトリスト
+
+    protected $casts = [
+        'clear_flg' => 'boolean', // clear_flg をブール値としてキャスト
+    ];
+
+    // デフォルト値を設定
+    protected $attributes = [
+        'clear_flg' => 0, // clear_flg のデフォルト値を 0 に設定
+    ];
+
 }

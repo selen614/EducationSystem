@@ -30,6 +30,10 @@ class User extends Authenticatable
             return $this->belongsTo(Grade::class, 'grade_id', 'id');
         }
 
+    public function curriculumProgress() {
+        return $this->hasMany(CurriculumProgress::class, 'user_id', 'id');
+    }
+
     /**
      * The attributes that should be hidden for serialization.
      *

@@ -6,30 +6,60 @@
 </div>
 <div class="container">
     <div class="curriculums_wrapper">
-        <div class="attendance_area">
-            <div class="video_area">
-                <p>仮エリア</p>
-                <video controls poster="画像のURL" src="#"></video>
-                <img src="">
+        @if ($alwaysDeliveryFlag === 1)
+            <div class="attendance_area">
+                <div class="video_area">
+                <!-- 常時公開フラグが立っている場合は、動画を常に再生可能とする -->
+                    <video controls>
+                        <source src="{{ asset($curriculum->video_url) }}" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <div class="clear_area">
+                        <form class="" action="{{ route('user.complete', ['complete_id' => $curriculum->id]) }}" method="POST">
+                            @csrf
+                            <button  type="button" class="clear_btn">受講しました</button>
+                        </form>
+                </div>
             </div>
-            <div class="clear_area">
-                <form class="" action="#" method="POST">
-                    @csrf
-                    <button  type="button" class="clear_btn">受講しました</button>
-                </form>
-            </div>
-        </div>
+        @else
+        <!-- 配信期間中であるかをチェックし、再生可能な場合にのみ動画を表示 -->
+                @if ($currentDateTime >= $deliveryFrom && $currentDateTime <= $deliveryTo)
+                    <div class="attendance_area">
+                        <div class="video_area">
+                        <video controls>
+                            <source src="{{ asset($curriculum->video_url) }}" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        </div>
+                        <div class="clear_area">
+                        <form class="" action="{{ route('user.complete', ['complete_id' => $curriculum->id]) }}" method="POST">
+                            @csrf
+                            <button  type="button" class="clear_btn">受講しました</button>
+                        </form>
+                        </div>
+                    </div>
+                @else
+                    <div class="attendance_area">
+                        <!-- 配信期間外の場合にメッセージを表示 -->
+                        <div class="hidden_video">
+                            <p>申し訳ありません、現在動画はご視聴いただけません。</p>
+                        </div>
+                        <div class="no_press_area">
+                            <p class="no_press">受講しました</p>
+                        </div>
+                    </div>
+                @endif
+        @endif
         <div class="grade_area">
-            <p>小学校1年生</p>
+            <p>{{ $curriculum->grade->name }}</p>
         </div>
         <div class="description_area">
             <div class="description_title">
-                <p>授業タイトル</p>
+                <p>{{ $curriculum->title }}</p>
             </div>
             <div class="description_text">
-                <p>説明文</p>
-                <p>テキストテキストテキストテキストテキストテキストテキストテキスト
-                    テキストテキストテキストテキストテキストテキストテキスト</p>
+                <p>{{ $curriculum->description }}</p>
             </div>
         </div>
     </div>

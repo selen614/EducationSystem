@@ -42,6 +42,8 @@ Route::get('/login', [App\Http\Controllers\User\Auth\LoginController::class, 'sh
 Route::get('/top', [App\Http\Controllers\User\Auth\TopController::class, 'showTop'])->name('show.top');
 
 //配信画面
-Route::get('/delivery', [App\Http\Controllers\User\Auth\DeliveryController::class, 'showDelivery'])->name('show.delivery');
+Route::get('/delivery/{id}', [App\Http\Controllers\User\Auth\DeliveryController::class, 'showDelivery'])->name('show.delivery');
+
+Route::post('/delivery/{complete_id}', [App\Http\Controllers\User\Auth\DeliveryController::class, 'complete'])->name('complete');
 
 });
