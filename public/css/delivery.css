@@ -1,66 +1,60 @@
 @charset "utf-8";
 
-.curriculums_wrapper{
+.curriculums-wrapper{
   margin: 0 auto;
   width: 90%;
   height: 100vh;
 }
 
-.return_btn{
+.return-btn{
   margin: 10px auto 0 20px;
   font-size: 1.25rem;
   font-weight: bold;
 }
 
-.attendance_area{
-  display: flex;
+.attendance{
   margin-top: 5px;
+  width: 100%;
   height: 40%;
 }
 
-.video_area{
+.attendance__video-area{
   width: 50%;
-  height: 100%;
+}
+
+.attendance__clear-area{
+  width: 50%;
   position: relative;
 }
 
-video{
-  position: absolute;
-  top: 0;
-  left: 0;
-  object-fit: contain;
+iframe{
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+}
+
+.attendance__hidden-video{
+  background-color: #dcdcdc;
   width: 100%;
   height: 100%;
-}
-
-.hidden_video{
-  background-color: #dcdcdc;
-  width: 50%;
-  height: 100%;
   position: relative;
 }
 
-.hidden_video p{
+.attendance__hidden-video p{
+  text-align: left;
   position: absolute;
   top: 50%;
   left: 50%;
-  -webkit-transform : translate(-50%,-50%);
-  transform : translate(-50%,-50%);
-  text-align: center;
+  transform: translate(-50%,-50%);
+  -webkit-transform: translate(-50%,-50%);
 }
 
-.clear_area{
-  width: 50%;
-  height: 100%;
-  position: relative;
-}
-
-.clear_btn{
+.clear-btn{
   position: absolute;
   top: 50%;
   left: 50%;
-  -webkit-transform : translate(-50%,-50%);
-  transform : translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  -webkit-transform: translate(-50%,-50%);
   text-align: center;
   font-size: 1.25rem;
   color: #fff;
@@ -70,18 +64,12 @@ video{
   border: 1px solid #d2691e;
 }
 
-.no_press_area{
-  width: 50%;
-  height: 100%;
-  position: relative;
-}
-
-.no_press{
+.no-press{
   position: absolute;
   top: 50%;
   left: 50%;
-  -webkit-transform : translate(-50%,-50%);
-  transform : translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  -webkit-transform: translate(-50%,-50%);
   text-align: center;
   font-size: 1.25rem;
   color: #696969;

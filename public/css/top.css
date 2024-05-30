@@ -1,6 +1,6 @@
 @charset "utf-8";
 
-.top_wrapper{
+.top-wrapper{
   width: 70vw;
   margin: 0 auto;
 }
@@ -54,24 +54,24 @@
 
 /*スライドショーcssここまで*/
 
-.article_container{
+.article-container{
   margin-top: 60px;
 }
 
-.article_title{
+.article-title{
   font-size: 1.75rem;
   text-align: left;
 }
 
 
-.article_area{
+.article-area{
   margin: 30px auto 0 auto;
   width: 80%;
   border: 1px #c1c1c1 solid;
   border-radius: 25px;
 }
 
-.article_ul{
+.article-ul{
   display: inline-block;
   width: 95%;
   height: 120px;
@@ -81,14 +81,14 @@
   margin-bottom: 10px;
 }
 
-.article_li{
+.article-li{
   margin-top: 10px;
 }
 
-.article_li:last-child{
+.article-li:last-child{
   margin-bottom: 10px;
 }
 
-.title_area{
+.title-area{
   margin-left: 30px;
 }

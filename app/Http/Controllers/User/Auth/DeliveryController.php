@@ -22,11 +22,12 @@ class DeliveryController extends Controller
             // データが見つからない場合の処理を記述
             abort(404);
         }
-
+        
         //ログインしているユーザー情報を全取得
         $user = Auth::user(); 
 
-        //ログインしているユーザーの学年を取得
+        // 通常のURLを埋め込みURLに変換
+        $videoUrl = $this->convertToEmbedUrl($curriculum->video_url);
 
         // delivery_timesテーブルからデータを取得
         $time = DeliveryTime::where('curriculums_id', $curriculum->id)->first();
@@ -60,6 +61,7 @@ class DeliveryController extends Controller
         $data = [
             'curriculum' => $curriculum,
             'user' => $user,
+            'videoUrl' => $videoUrl,
             'time' => $time,
             'grade' => $grade,
             'currentDateTime' => $currentDateTime,
@@ -98,5 +100,16 @@ class DeliveryController extends Controller
         // 他の処理（リダイレクトなど）が必要であればここで行う
     
         return redirect()->back();
+    }
+
+    //普通のyoutubeURLを埋め込みURLに変換
+    private function convertToEmbedUrl($url) {
+        if (strpos($url, 'youtube.com/watch') !== false) {
+            return str_replace('watch?v=', 'embed/', $url);
+        } elseif (strpos($url, 'youtu.be/') !== false) {
+            return str_replace('youtu.be/', 'www.youtube.com/embed/', $url);
+        } else {
+            return $url; // 既に埋め込みURLの場合はそのまま返す
+        }
     }
 }

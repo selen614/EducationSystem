@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="register_btn">
+<div class="register-btn">
     <button type="button" class="btn1" onclick="location.href='{{ route('user.show.register') }}'">
     新規会員登録はこちら
     </button>
@@ -11,16 +11,16 @@
 <div class="container">
 <div class="card">
                 
-    <div class="card_header">ログイン</div>
+    <div class="card-header">ログイン</div>
 
-        <div class="card_body">
+        <div class="card-body">
             <form method="POST" action="{{ route('user.login') }}">
                 @csrf
                 
                 <div class="center">
-                    <div class="col_md_6">
+                    <div class="col-md-6">
                         <label for="email">メールアドレス</label>
-                        <input id="email" type="email" class="form_control 
+                        <input id="email" type="email" class="form-control 
                         @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
 
                         @error('email')
@@ -30,12 +30,12 @@
                         @enderror
                     </div>
 
-                    <div class="col_md_6">
+                    <div class="col-md-6">
                         <label for="password">パスワード</label>
                         <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
 
                         @error('password')
-                            <p class="invalid_feedback" role="alert">
+                            <p class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </p>
                         @enderror
@@ -43,7 +43,7 @@
 
                 </div>
 
-                <button type="submit" class="btn2 btn_primary" >
+                <button type="submit" class="btn2 btn-primary" >
                 ログイン
                 </button>
             </form>

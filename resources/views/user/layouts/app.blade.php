@@ -35,30 +35,30 @@
 
         @unless(Request::is('login') || Request::is('register'))
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-        <div class="navbar_wrap" id="navbarSupportedContent">
+        <div class="navbar-wrap" id="navbarSupportedContent">
                 <!-- Left Side Of Navbar -->
-                <div class="nav_area">
-                        <ul class="main_nav">
-                            <li class="nav_btn size_a"><a href="">時間割</a></li>
-                            <li class="nav_btn size_a"><a href="">授業進捗</a></li>
-                            <li class="nav_btn size_b"><a href="">プロフィール設定</a></li>
+                <div class="nav-area">
+                        <ul class="main-nav">
+                            <li class="nav-btn size-a"><a href="#">時間割</a></li>
+                            <li class="nav-btn size-a"><a href="#">授業進捗</a></li>
+                            <li class="nav-btn size-b"><a href="#">プロフィール設定</a></li>
                         </ul> 
                 </div>
                     
-                <div class="nav_area">
+                <div class="nav-area">
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
                         <!-- Authentication Links -->
                         @guest
                         @if (Route::has('login'))
-                        <li class="nav_item">
+                        <li class="nav-item">
                             <a class="nav-link" href="{{ route('user.show.login') }}">ログイン</a>
                         </li>
                         @endif
                         @else
-                        <li class="nav_item dropdown">
+                        <li class="nav-item dropdown">
                             
-                            <div class="dropdown_menu" aria-labelledby="navbarDropdown">
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="{{ route('user.show.login') }}"
                                 onclick="event.preventDefault();
                                 document.getElementById('logout-form').submit();">
