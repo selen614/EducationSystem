@@ -31,7 +31,7 @@ class User extends Authenticatable
         }
 
     public function curriculumProgress() {
-        return $this->hasMany(CurriculumProgress::class, 'user_id', 'id');
+        return $this->hasMany(CurriculumProgress::class, 'users_id', 'id');
     }
 
     /**

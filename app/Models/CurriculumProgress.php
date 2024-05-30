@@ -9,12 +9,17 @@ class CurriculumProgress extends Model
 {
     use HasFactory;
 
-    public function user()
+    public function curriculum()
         {
-            return $this->belongsTo(User::class, 'user_id', 'id');
+            return $this->belongsTo(Curriculum::class, 'curriculums_id', 'id');
         }
 
-    protected $fillable = ['curriculum_id', 'user_id', 'clear_flg']; // ホワイトリスト
+    public function user()
+        {
+            return $this->belongsTo(User::class, 'users_id', 'id');
+        }
+
+    protected $fillable = ['curriculums_id', 'users_id', 'clear_flg']; // ホワイトリスト
 
     protected $casts = [
         'clear_flg' => 'boolean', // clear_flg をブール値としてキャスト

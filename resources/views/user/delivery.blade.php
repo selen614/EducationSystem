@@ -2,9 +2,10 @@
 
 @section('content')
 <div class="return_btn">
-    <a href="">←戻る</a>
+    <a href="{{ url()->previous() }}">←戻る</a>
 </div>
 <div class="container">
+    @if($user->grade_id >= $curriculum->grade_id)
     <div class="curriculums_wrapper">
         @if ($alwaysDeliveryFlag === 1)
             <div class="attendance_area">
@@ -15,12 +16,18 @@
                         Your browser does not support the video tag.
                     </video>
                 </div>
-                <div class="clear_area">
+                @if ($clearFlag === 0)
+                    <div class="clear_area">
                         <form class="" action="{{ route('user.complete', ['complete_id' => $curriculum->id]) }}" method="POST">
                             @csrf
-                            <button  type="button" class="clear_btn">受講しました</button>
+                            <button  type="submit" class="clear_btn">受講しました</button>
                         </form>
-                </div>
+                    </div>
+                @else
+                    <div class="no_press_area">
+                        <p class="no_press">受講しました</p>
+                    </div>
+                @endif
             </div>
         @else
         <!-- 配信期間中であるかをチェックし、再生可能な場合にのみ動画を表示 -->
@@ -32,12 +39,18 @@
                             Your browser does not support the video tag.
                         </video>
                         </div>
-                        <div class="clear_area">
-                        <form class="" action="{{ route('user.complete', ['complete_id' => $curriculum->id]) }}" method="POST">
-                            @csrf
-                            <button  type="button" class="clear_btn">受講しました</button>
-                        </form>
-                        </div>
+                        @if ($clearFlag === 0)
+                            <div class="clear_area">
+                                <form class="" action="{{ route('user.complete', ['complete_id' => $curriculum->id]) }}" method="POST">
+                                    @csrf
+                                    <button  type="submit" class="clear_btn">受講しました</button>
+                                </form>
+                            </div>
+                        @else
+                            <div class="no_press_area">
+                                <p class="no_press">受講しました</p>
+                            </div>
+                        @endif
                     </div>
                 @else
                     <div class="attendance_area">
@@ -63,5 +76,8 @@
             </div>
         </div>
     </div>
+    @else
+    <p>このカリキュラムは、あなたの学年では表示できません。</p>
+    @endif
 </div>
 @endsection

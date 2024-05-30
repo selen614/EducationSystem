@@ -9,12 +9,24 @@ use App\Models\Curriculum;
 use App\Models\DeliveryTime;
 use App\Models\Grade;
 use App\Models\CurriculumProgress;
+use Illuminate\Support\Facades\DB; 
 
 class DeliveryController extends Controller
 {
     //配信画面表示
     public function showDelivery($id) {
         $curriculum = Curriculum::find($id);
+
+        // データが見つかったかどうかをチェック
+        if (!$curriculum) {
+            // データが見つからない場合の処理を記述
+            abort(404);
+        }
+
+        //ログインしているユーザー情報を全取得
+        $user = Auth::user(); 
+
+        //ログインしているユーザーの学年を取得
 
         // delivery_timesテーブルからデータを取得
         $time = DeliveryTime::where('curriculums_id', $curriculum->id)->first();
@@ -32,30 +44,52 @@ class DeliveryController extends Controller
         //alway_delivery_flgの値を取得
         $alwaysDeliveryFlag = $curriculum->alway_delivery_flg;
 
-        // データが見つかったかどうかをチェック
-        if (!$curriculum) {
-            // データが見つからない場合の処理を記述
-            abort(404);
+        //curriculum_progressを取得
+        $progress = CurriculumProgress::where('curriculums_id', $curriculum->id)
+                                        ->where('users_id', $user->id)
+                                        ->first();
+                                        
+        //curriculum_progressのclear_flgを取得
+        if(is_null($progress)){
+            $clearFlag = 0;
+        }else{
+            $clearFlag = $progress->clear_flg;                                           
         }
 
-        return view('user.delivery', compact('curriculum','time','grade','currentDateTime','deliveryFrom','deliveryTo','alwaysDeliveryFlag'));
+        //viewにもっていくデータまとめ
+        $data = [
+            'curriculum' => $curriculum,
+            'user' => $user,
+            'time' => $time,
+            'grade' => $grade,
+            'currentDateTime' => $currentDateTime,
+            'deliveryFrom' => $deliveryFrom,
+            'deliveryTo' => $deliveryTo,
+            'alwaysDeliveryFlag' => $alwaysDeliveryFlag,
+            'clearFlag' => $clearFlag,
+        ];
+
+
+        return view('user.delivery', $data);
     }
 
     //クリアフラグ更新処理
     public function complete($complete_id) {
+
         // ユーザーのIDを取得
-        $user_id = Auth::id();
-    
+        $userId = Auth::id();
+
         // トランザクション開始
         DB::beginTransaction();
 
         try {
                 // 新しい進行状況レコードを作成
                 CurriculumProgress::create([
-                    'complete_id' => $curriculum_id,
-                    'user_id' => $user_id,
+                    'curriculums_id' => $complete_id,
+                    'users_id' => $userId,
                     'clear_flg' => 1,
                 ]);
+                DB::commit();
             } catch (\Exception $e) {
                 DB::rollback();
                 return back();
