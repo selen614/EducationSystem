@@ -26,12 +26,12 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="kana" class="col-md-4 col-form-label text-md-end">{{ __('Kana') }}</label>
+                            <label for="name_kana" class="col-md-4 col-form-label text-md-end">{{ __('Name Kana') }}</label>
 
                             <div class="col-md-6">
-                                <input id="kana" type="kana" class="form-control @error('kana') is-invalid @enderror" name="kana" value="{{ old('kana') }}" required autocomplete="kana">
+                                <input id="name_kana" type="text" class="form-control @error('name_kana') is-invalid @enderror" name="name_kana" value="{{ old('name_kana') }}" required autocomplete="name_kana">
 
-                                @error('kana')
+                                @error('name_kana')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
