@@ -8,7 +8,7 @@
                 <div class="card-header">{{ __('Register') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('admin.register') }}">
+                    <form method="POST" action="{{ route('admin.auth.register.store') }}">
                         @csrf
 
                         <div class="row mb-3">
@@ -24,6 +24,7 @@
                                 @enderror
                             </div>
                         </div>
+
 
                         <div class="row mb-3">
                             <label for="kana" class="col-md-4 col-form-label text-md-end">{{ __('Kana') }}</label>

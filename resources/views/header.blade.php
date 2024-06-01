@@ -11,7 +11,7 @@
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav me-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('admin.show.curriculum.list') }}">授業管理</a>
+                    <a class="nav-link" href="{{ route('user.show.curriculum.list') }}">授業管理</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('admin.show.article.list') }}">お知らせ管理</a>

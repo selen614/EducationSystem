@@ -10,9 +10,5 @@ class Banner extends Model
 {
     use HasFactory;
 
-    public function updatebanner($image_path){
-        DB::table('banner')->insert([
-            'image_file' => $image_path
-        ]);
-    }
+    
 }

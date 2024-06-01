@@ -32,16 +32,16 @@ Route::prefix('admin')->namespace('Admin')->name('admin.')->group(function () {
         Route::get('login', [LoginController::class, 'index'])->name('auth.login');
         Route::post('login', [LoginController::class, 'login']);
         Route::post('logout', [LoginController::class, 'logout'])->name('auth.logout');
-        Route::get('register', [RegisterController::class, 'index'])->name('register'); 
-        Route::post('register', [RegisterController::class, 'register']); 
+        Route::get('register', [RegisterController::class, 'index'])->name('auth.register'); 
+        Route::post('register', [RegisterController::class, 'register'])->name('auth.register.store'); 
     });
 
 Route::get('top', [TopController::class, 'showTop'])->name('showTop');
-//Route::get('curriculum_list', [CurriculumController::class, 'showCurriculumList'])->name('show.curriculum.list');
-//Route::get('article_list', [ArticleController::class, 'showArticleList'])->name('show.article.list');
 Route::get('banner_edit', [BannerController::class, 'showBannerEdit'])->name('show.banner.edit');
-Route::post('banners', [BannerController::class, 'store'])->name('banners.store');
-Route::delete('banners/{banner}', [BannerController::class, 'destroy'])->name('banners.destroy');
+Route::get('article_list', [ArticleController::class, 'showArticleList'])->name('show.article.list');
+Route::post('banner_edit', [BannerController::class, 'bannerStore'])->name('banner.store');
+//Route::post('banner_edit', [BannerController::class, 'bannerAdd'])->name('banner.add');
+Route::delete('banner_edit/{banner}', [BannerController::class, 'destroy'])->name('banner.destroy');
 
 });
 
