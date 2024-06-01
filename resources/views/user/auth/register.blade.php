@@ -46,7 +46,7 @@
                                 @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
     
                                 @error('email')
-                                    <p class="invalid_feedback" role="alert">
+                                    <p class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </p>
                                 @enderror
@@ -57,7 +57,7 @@
                                 <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
     
                                 @error('password')
-                                    <p class="invalid_feedback" role="alert">
+                                    <p class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </p>
                                 @enderror

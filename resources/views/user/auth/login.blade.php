@@ -24,7 +24,7 @@
                         @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
 
                         @error('email')
-                            <p class="invalid_feedback" role="alert">
+                            <p class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </p>
                         @enderror
