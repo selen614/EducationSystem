@@ -15,7 +15,7 @@ class Admin extends Authenticatable
 
     protected $fillable = [
         'name',
-        'name_kana',  //追記
+        'kana',  //追記
         'email',
         'password',
     ];
@@ -29,10 +29,8 @@ class Admin extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function getAdminById(){
-       // name と email のみ取得する
-       $admin = Admin::select('name', 'email')->get();
-       return $admin;
+    //管理者新規登録処理
+    
 
-    }
+
 }

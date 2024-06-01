@@ -26,7 +26,7 @@ class RegisterRequest extends FormRequest
     {
         return [
             'name' => 'required | max:255',
-            'name_kana' => 'required | max:255' ,
+            'kana' => 'required | max:255' ,
             'email' => ['required' , 'max:255',new HalfWidth],
             'password' => ['required','min:8','max:255',new HalfWidth, 'confirmed'],
             'password_confirmation' => ['required','min:8','max:255',new HalfWidth],
@@ -37,7 +37,7 @@ class RegisterRequest extends FormRequest
     {
         return [
             'name' => 'ユーザーネーム',
-            'name_kana' => 'カナ',
+            'kana' => 'カナ',
             'email' => 'メールアドレス',
             'password' => 'パスワード',
             'password_confirmation' => 'パスワード確認',
@@ -49,8 +49,8 @@ class RegisterRequest extends FormRequest
         return [
             'name.required' => ':attributeは必須項目です。',
             'name.max' => ':attributeは:max字以内で入力してください。',
-            'name_kana.required' => ':attributeは必須項目です。',
-            'name_kana.max' => ':attributeは:max字以内で入力してください。',
+            'kana.required' => ':attributeは必須項目です。',
+            'kana.max' => ':attributeは:max字以内で入力してください。',
             'email.required' => ':attributeは必須項目です。',
             'email.max' => ':attributeは:max字以内で入力してください。',
             'email.half_width' => ':attributeは半角文字で入力してください。',

@@ -9,8 +9,9 @@ use Illuminate\Http\Request;
 class TopController extends Controller
 {
     public function showTop(){
-        $admin = Admin::all(); // 全ての管理者データを取得
-        return view('admin.top', ['admin' => $admin]);
+        
+        $admins = Admin::select('name', 'email')->get();
+        return view('admin.top', ['admins' => $admins]);
     }
 
 }

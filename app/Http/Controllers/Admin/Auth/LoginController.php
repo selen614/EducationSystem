@@ -25,7 +25,6 @@ class LoginController extends Controller
     | to conveniently provide its functionality to your applications.
     |
     */
-
     //use AuthenticatesUsers;
     use AuthenticatesUsers {                                //追記
         logout as performLogout;                            //追記

@@ -3,7 +3,8 @@
 namespace App\Http\Controllers\Admin\Auth;
 
 use App\Http\Controllers\Controller;
-//use App\Providers\RouteServiceProvider;//追記
+use Illuminate\Http\Request;
+use App\Providers\RouteServiceProvider;//追記
 use App\Models\Admin;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
@@ -58,30 +59,38 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
+    
+
     protected function validator(array $data)
     {
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
-            'name_kana' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:admins'],     //修正
+            'kana' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:admins'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
     }
 
-
-    /**
-     * Create a new user instance after a valid registration.
-     *
-     * @param  array  $data
-     * @return \App\Models\User
-     */
     protected function create(array $data)
     {
-        return Admin::create([                  //修正
+        return Admin::create([
             'name' => $data['name'],
-            'name_kana' => $data['name_kana'],
+            'kana' => $data['kana'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
     }
+
+    public function register(Request $request)
+    {
+        $this->validator($request->all())->validate();
+
+        $admin = $this->create($request->all());
+
+        $this->guard()->login($admin);
+
+        return redirect($this->redirectPath());
+    }
 }
+
+

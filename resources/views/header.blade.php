@@ -11,13 +11,13 @@
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav me-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('admin.curriculum_list') }}">授業管理</a>
+                    <a class="nav-link" href="{{ route('admin.show.curriculum.list') }}">授業管理</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('admin.article_list') }}">お知らせ管理</a>
+                    <a class="nav-link" href="{{ route('admin.show.article.list') }}">お知らせ管理</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('admin.banner_edit') }}">バナー管理</a>
+                    <a class="nav-link" href="{{ route('admin.show.banner.edit') }}">バナー管理</a>
                 </li>
             </ul>
 

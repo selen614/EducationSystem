@@ -1,0 +1,8 @@
+.header {
+    display: flex;
+    justify-content: space-between; /* 要素間のスペースを均等に配置 */
+    align-items: center; /* 要素を中央揃え */
+    padding: 10px 20px; /* 内側の余白 */
+    background-color: #333; /* 背景色 */
+    color: #fff; /* 文字色 */
+}
