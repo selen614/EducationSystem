@@ -21,25 +21,25 @@
                     <div class="col-md-6">
                         <label for="email">メールアドレス</label>
                         <input id="email" type="email" class="form-control 
-                        @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                        @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" autocomplete="email" autofocus>
 
-                        @error('email')
-                            <p class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </p>
-                        @enderror
                     </div>
+                    @error('email')
+                        <p class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </p>
+                    @enderror
 
                     <div class="col-md-6">
                         <label for="password">パスワード</label>
-                        <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+                        <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" autocomplete="current-password">
 
-                        @error('password')
-                            <p class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </p>
-                        @enderror
                     </div>
+                    @error('password')
+                        <p class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </p>
+                    @enderror
 
                 </div>
 

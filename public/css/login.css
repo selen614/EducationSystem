@@ -35,10 +35,6 @@ input[type="text"]{
   padding: 10px 0 10px 20px;
 }
 
-.invalid_feedback{
-  color: red;
-}
-
 .col-md-6{
   margin-top: 30px;
   display: flex;
@@ -66,4 +62,9 @@ input[type="text"]{
   color: #fff;
   background-color: #ff7f50;
   border: 1px solid #d2691e;
+}
+
+.invalid-feedback{
+  display: inline;
+  color: red;
 }

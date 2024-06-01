@@ -34,9 +34,6 @@ Route::namespace('User')->name('user.')->group(function () {
   Route::post('password/email', [App\Http\Controllers\User\Auth\ForgotPasswordController::class, 'sendResetLinkEmail'])->name('password.email');
   Route::get('password/reset/{token}', [App\Http\Controllers\User\Auth\ResetPasswordController::class, 'showResetForm'])->name('password.reset');
   Route::post('password/reset', [App\Http\Controllers\User\Auth\ResetPasswordController::class, 'reset'])->name('password.update');
-  
-//ログインページ
-Route::get('/login', [App\Http\Controllers\User\Auth\LoginController::class, 'showLoginForm'])->name('show.login');
 
 //トップページ
 Route::get('/top', [App\Http\Controllers\User\Auth\TopController::class, 'showTop'])->name('show.top');
