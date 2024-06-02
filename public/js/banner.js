@@ -1,23 +1,12 @@
-document.addEventListener("DOMContentLoaded", function() {
-    // 削除ボタンのクリックイベント
-    var deleteBannerButton = document.getElementById('deleteBanner');
-    if (deleteBannerButton) {
-        deleteBannerButton.addEventListener('click', function() {
-            if (confirm('バナーを削除しますか？')) {
-                deleteBanner();
-            }
-        });
-    }
-   
-    // 追加ボタンのクリックイベント
-    var addBannerButton = document.getElementById('addBanner');
-    if (addBannerButton) {
-        addBannerButton.addEventListener('click', function() {
-            addBannerInput();
-        });
-    }
+//追加ボタン
+document.getElementById('addBanner').addEventListener('click', function () {
+    var container = document.querySelector('.form-group');
+    var newBannerInput = document.createElement('input');
+    newBannerInput.type = 'file';
+    newBannerInput.name = 'banner[]';
+    newBannerInput.classList.add('form-control');
+    container.appendChild(newBannerInput);
 });
-
 
 
 

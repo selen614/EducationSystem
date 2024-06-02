@@ -1,8 +1,44 @@
-.header {
+/* 全体 */
+.navbar {
+    width: 100%;
+    height: 100px;
+    background-color: #add8e6;
+    justify-content: space-between; /* 左右に要素を配置 */
+    align-items: center; /* 垂直方向中央寄せ */
+    padding: 0 20px; /* 左右にパディング */
+}
+ /* 授業管理等ボタン */
+.navbar-nav .nav-link {
+    color: white; /* テキストの色を白に */
+    font-weight: bold; /* 太字 */
+    background-color: #092f55; 
+    padding: 10px 20px; 
+    border-radius: 15px; /* 角を丸くする */
+    margin: 0 5px; /* ボタン間の余白 */
+    text-align: center; /* 中央揃え */
+    display: inline-block; /* ボタンのような表示 */
+}
+.navbar-nav .nav-link:hover {
+    color: #f2ff00; /* ホバー時の色 */
+}
+/* ログアウト */
+.dropdown-menu {
+    background-color: #ffffff; /* メニューの背景色 */
+    border: 1px solid #dee2e6; /* ボーダー */
+    position: absolute; /* 絶対位置 */
+    right: 20px; /* 右寄せ */
+    top: 60px; /* 下に位置調整 */
+}
+.navbar-nav.ms-auto {
+    margin-left: auto; /* 右寄せ */
+}
+.nav-item.dropdown {
+    position: relative; /* ドロップダウンメニューの親要素に相対位置を設定 */
+}
+.navbar-nav {
     display: flex;
-    justify-content: space-between; /* 要素間のスペースを均等に配置 */
-    align-items: center; /* 要素を中央揃え */
-    padding: 10px 20px; /* 内側の余白 */
-    background-color: #333; /* 背景色 */
-    color: #fff; /* 文字色 */
+    align-items: center;
+}
+.content {
+    padding: 20px;
 }

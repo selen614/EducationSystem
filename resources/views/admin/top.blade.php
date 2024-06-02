@@ -1,5 +1,7 @@
 @extends('header')
 
+@section('title', 'TOP')
+
 @section('content')
 
 <table border="1">

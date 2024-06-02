@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\HomeController;
+//use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Admin\Auth\LoginController;
 use App\Http\Controllers\Admin\Auth\RegisterController;
 use App\Http\Controllers\Admin\TopController;
@@ -36,12 +36,12 @@ Route::prefix('admin')->namespace('Admin')->name('admin.')->group(function () {
         Route::post('register', [RegisterController::class, 'register'])->name('auth.register.store'); 
     });
 
-Route::get('top', [TopController::class, 'showTop'])->name('showTop');
+Route::get('top', [TopController::class, 'showTop'])->name('admin.top');
 Route::get('banner_edit', [BannerController::class, 'showBannerEdit'])->name('show.banner.edit');
 Route::get('article_list', [ArticleController::class, 'showArticleList'])->name('show.article.list');
 Route::post('banner_edit', [BannerController::class, 'bannerStore'])->name('banner.store');
 //Route::post('banner_edit', [BannerController::class, 'bannerAdd'])->name('banner.add');
-Route::delete('banner_edit/{banner}', [BannerController::class, 'destroy'])->name('banner.destroy');
+Route::delete('banner_edit/{id}', [BannerController::class, 'destroy'])->name('banner.destroy');
 
 });
 
