@@ -17,7 +17,6 @@
     margin: 0 5px; /* ボタン間の余白 */
     text-align: center; /* 中央揃え */
     display: inline-block; /* ボタンのような表示 */
-    text-decoration: none; /* 下線を削除 */
 }
 .navbar-nav .nav-link:hover {
     color: #f2ff00; /* ホバー時の色 */
@@ -25,6 +24,7 @@
 /* ログアウト */
 .dropdown-menu {
     background-color: #ffffff; /* メニューの背景色 */
+    border: 1px solid #dee2e6; /* ボーダー */
     position: absolute; /* 絶対位置 */
     right: 20px; /* 右寄せ */
     top: 60px; /* 下に位置調整 */
@@ -36,9 +36,6 @@
     position: relative; /* ドロップダウンメニューの親要素に相対位置を設定 */
 }
 .navbar-nav {
-    list-style: none; 
-    padding: 0; 
-    margin: 0; 
     display: flex;
     align-items: center;
 }

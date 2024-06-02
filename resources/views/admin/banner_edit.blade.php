@@ -5,7 +5,7 @@
 
 <main class="py-4">
     <div class="container">
-    <a href="{{ route('admin.showTop') }} "class="btn btn-primary">←戻る</a>
+    <a href="{{ route('admin.top') }} "class="btn btn-primary">←戻る</a>
     <h2>バナー管理</h2>
 
     <form action="{{ route('admin.banner.store') }}" method="POST" enctype="multipart/form-data">
