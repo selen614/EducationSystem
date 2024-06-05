@@ -7,6 +7,9 @@
     align-items: center; /* 垂直方向中央寄せ */
     padding: 0 20px; /* 左右にパディング */
 }
+.navbar-collapse {
+    display: flex;
+}
  /* 授業管理等ボタン */
 .navbar-nav .nav-link {
     color: white; /* テキストの色を白に */
@@ -21,17 +24,14 @@
 .navbar-nav .nav-link:hover {
     color: #f2ff00; /* ホバー時の色 */
 }
+
 /* ログアウト */
 .dropdown-menu {
     background-color: #ffffff; /* メニューの背景色 */
     border: 1px solid #dee2e6; /* ボーダー */
     position: absolute; /* 絶対位置 */
-    right: 20px; /* 右寄せ */
-    top: 60px; /* 下に位置調整 */
 }
-.navbar-nav.ms-auto {
-    margin-left: auto; /* 右寄せ */
-}
+
 .nav-item.dropdown {
     position: relative; /* ドロップダウンメニューの親要素に相対位置を設定 */
 }
@@ -40,5 +40,10 @@
     align-items: center;
 }
 .content {
-    padding: 20px;
+    padding: 50px;
+    font-size: 20px; 
+}
+
+.navbar-nav .nav-link::after {
+    display: none;
 }

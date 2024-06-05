@@ -9,12 +9,10 @@
         <th>Name</th>
         <th>Email</th>
     </tr>
-    @foreach ($admins as $admin)
-        <tr>
-            <td>{{ $admin->name }}</td>
-            <td>{{ $admin->email }}</td>
-        </tr>
-    @endforeach
+    <tr>
+        <td>{{ $admin->name }}</td>
+        <td>{{ $admin->email }}</td>
+    </tr>
 </table>
 
 @endsection

@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Providers\RouteServiceProvider;//追記
+//use App\Providers\RouteServiceProvider;//追記
 use App\Models\Admin;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
@@ -74,22 +74,19 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         return Admin::create([
-            'name' => $data['name'],
-            'kana' => $data['kana'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
+            'name' => $request->name,
+            'kana' => $request->kana,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
         ]);
     }
 
     public function register(Request $request)
     {
         $this->validator($request->all())->validate();
-
         $admin = $this->create($request->all());
-
-        $this->guard()->login($admin);
-
-        return redirect($this->redirectPath());
+        Auth::login($admin); // 新規ユーザーをログイン
+        return redirect()->route('admin.admin.top');
     }
 }
 

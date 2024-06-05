@@ -1,9 +1,8 @@
-@extends('layouts.app')                  <!-- ビューのコメントアウト -->
+@extends('layouts.app')  <!-- この中は後から変える -->
 
 @section('content')
 <div class="main-content">
-@include('layouts.header')  
-<a href="{{ route('show.top') }}" method="GET">← 戻る</a>
+<a href="{{ route('user.show.top') }}" method="GET">← 戻る</a>
 
 <div class="date-grade-selector">
         <button id="prevDate">&lt;</button>

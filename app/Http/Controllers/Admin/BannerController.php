@@ -5,35 +5,36 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Banner;
+use Illuminate\Support\Facades\Storage;
 
 class BannerController extends Controller
 {
     // 表示
     public function showBannerEdit()
     {
-        $banners = Banner::all();
-        return view('admin.banner_edit', ['banners' => $banners]); 
+        $banner = Banner::all();
+        return view('admin.banner_edit', ['banner' => $banner]); 
     }
 
     //　登録ボタン処理
     public function bannerStore(Request $request)
     {
         $request->validate([                       //バリデーション
-            'banner' => 'required|image|mimes:jpg,png|max:2048',  
+            'newBanner.*' => 'image|mimes:jpg,png|max:2048',   
         ]);
     
-        $image = $request->file('banner');// アップロードされた画像ファイルを取得
-
-        if ($image) {                     // アップロードされた画像がある場合
-            $path = $image->store('public/banners');     // バナー画像を保存するパスを指定（storage/app/publicディレクトリ内）
-
-            $banner = new Banner();
-            $banner->image = $path;
-            $banner->save();
+        if ($request->hasFile('newBanner')) {
+            foreach ($request->file('newBanner') as $image) {
+                if ($image) {
+                    $path = $image->store('public/banners');
+                    $banner = new Banner();
+                    $banner->image = $path;
+                    $banner->save();
+                }
+            }
         }
-        return redirect()->route('admin.showBannerEdit');
+        return redirect()->route('admin.show.banner.edit');
     }
-
     
     //削除
     public function destroy($id)

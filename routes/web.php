@@ -30,7 +30,7 @@ Auth::routes();
 Route::prefix('admin')->namespace('Admin')->name('admin.')->group(function () {
     Route::namespace('Auth')->group(function () {
         Route::get('login', [LoginController::class, 'index'])->name('auth.login');
-        Route::post('login', [LoginController::class, 'login']);
+        Route::post('login', [LoginController::class, 'login'])->name('auth.login');
         Route::post('logout', [LoginController::class, 'logout'])->name('auth.logout');
         Route::get('register', [RegisterController::class, 'index'])->name('auth.register'); 
         Route::post('register', [RegisterController::class, 'register'])->name('auth.register.store'); 
