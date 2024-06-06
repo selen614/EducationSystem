@@ -28,7 +28,8 @@ class BannerController extends Controller
                 if ($image) {
                     $path = $image->store('public/banners');
                     $banner = new Banner();
-                    $banner->image = $path;
+                    $banner->image = str_replace('storage/', $path);
+                    \Log::info('Saved banner image path: ' . $banner->image);
                     $banner->save();
                 }
             }

@@ -36,12 +36,11 @@ Route::prefix('admin')->namespace('Admin')->name('admin.')->group(function () {
         Route::post('register', [RegisterController::class, 'register'])->name('auth.register.store'); 
     });
 
-Route::get('top', [TopController::class, 'showTop'])->name('admin.top');
+Route::get('top', [TopController::class, 'showTop'])->middlware('auth:admin');
 Route::get('banner_edit', [BannerController::class, 'showBannerEdit'])->name('show.banner.edit');
 Route::get('article_list', [ArticleController::class, 'showArticleList'])->name('show.article.list');
 Route::post('banner_edit', [BannerController::class, 'bannerStore'])->name('banner.store');
-//Route::post('banner_edit', [BannerController::class, 'bannerAdd'])->name('banner.add');
-Route::delete('banner_edit/{id}', [BannerController::class, 'destroy'])->name('banner.destroy');
+Route::post('banner_edit/{id}', [BannerController::class, 'destroy'])->name('banner.destroy');
 
 });
 

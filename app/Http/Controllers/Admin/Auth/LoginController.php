@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin\Auth;                       //修正
 
 use App\Http\Controllers\Controller;
-//use App\Providers\RouteServiceProvider; //追記
+use App\Providers\RouteServiceProvider; //追記
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth; 
 use Illuminate\Http\Request;
@@ -60,21 +60,21 @@ class LoginController extends Controller
         return redirect()->route('admin.auth.login');                 //追記
     }    //追記
 
-    public function login(LoginRequest $request)
-    {
-        $credentials = $request->only('email', 'password');
+    // public function login(LoginRequest $request)
+    // {
+    //     $credentials = $request->only('email', 'password');
 
-         // ログ出力を追加
-        //dd($credentials);
+    //      // ログ出力を追加
+    //     //dd($credentials);
 
-        if (Auth::guard('admin')->attempt($credentials, $request->filled('remember'))) {
-            return redirect()->route('admin.admin.top');
-        }
+    //     if (Auth::guard('admin')->attempt($credentials, $request->filled('remember'))) {
+    //         return redirect()->route('admin.admin.top');
+    //     }
 
-        return back()->withErrors([
-            'email' => 'アカウントが登録されていないか、パスワードが間違っています。',
-        ])->withInput();
+    //     return back()->withErrors([
+    //         'email' => 'アカウントが登録されていないか、パスワードが間違っています。',
+    //     ])->withInput();
  
-    }
+    // }
 }
 

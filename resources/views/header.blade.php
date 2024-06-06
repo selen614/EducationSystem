@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title', 'Default Title')</title>
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> 
 </head>
 <body>
     <nav class="navbar navbar-expand-md navbar-light shadow-sm">
@@ -19,34 +21,34 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <!-- Left Side Of Navbar -->
                 <ul class="navbar-nav me-auto">
-                    <li class="nav-item">
+                    <div class="nav-item">
                         <a class="nav-link" href="{{ route('user.show.curriculum.list') }}">授業管理</a>
-                    </li>
-                    <li class="nav-item">
+                    </div>
+                    <div class="nav-item">
                         <a class="nav-link" href="{{ route('admin.show.article.list') }}">お知らせ管理</a>
-                    </li>
-                    <li class="nav-item">
+                    </div>
+                    <div class="nav-item">
                         <a class="nav-link" href="{{ route('admin.show.banner.edit') }}">バナー管理</a>
-                    </li>
+                    </div>
                 </ul>
 
                 <!-- Right Side Of Navbar -->
                 <ul class="navbar-nav ms-auto">
                     <!-- Authentication Links -->
                     @guest
-                        @if (Route::has('login'))
-                            <li class="nav-item">
+                        @if (Route::has('admin.auth.login'))
+                            <div class="nav-item">
                                 <a class="nav-link" href="{{ route('admin.auth.login') }}">{{ __('Login') }}</a>
-                            </li>
+                            </div>
                         @endif
 
-                        @if (Route::has('register'))
-                            <li class="nav-item">
+                        @if (Route::has('admin.auth.register'))
+                            <div class="nav-item">
                                 <a class="nav-link" href="{{ route('admin.auth.register') }}">{{ __('Register') }}</a>
-                            </li>
+                            </div>
                         @endif
                     @else
-                        <li class="nav-item dropdown">
+                        <div class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 {{ Auth::user()->name }}
                             </a>
@@ -62,7 +64,7 @@
                                     @csrf
                                 </form>
                             </div>
-                        </li>
+                        </div>
                     @endguest
                 </ul>
             </div>

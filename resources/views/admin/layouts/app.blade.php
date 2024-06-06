@@ -14,7 +14,11 @@
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
 
     <!-- Scripts -->
-    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+
+     <!-- jQueryの追加 -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> 
+    
 </head>
 <body>
     <div id="app">
@@ -76,6 +80,14 @@
             @yield('content')
         </main>
     </div>
+    <!-- CSRFトークンの設定 -->
+    <!--<script>
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+    </script> -->
 </body>
 </html>
 
