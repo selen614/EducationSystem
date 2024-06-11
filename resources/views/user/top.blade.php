@@ -16,8 +16,12 @@
             <ul class="article-ul">
                 @foreach ($articles as $article)
                     <li class="article-li">
-                    <a class="date-area" href="#">{{ $article->formatted_posted_date }}</a>
-                    <a class="title-area" href="#">{{ $article->title }}</a>
+                        <div class="date-area">
+                            <a href="#">{{ $article->formatted_posted_date }}</a>
+                        </div>
+                        <div class="title-area">
+                            <a href="#">{{ $article->title }}</a>
+                        </div>
                     </li>
                 @endforeach
             </ul>

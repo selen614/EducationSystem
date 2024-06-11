@@ -38,9 +38,16 @@ class DeliveryController extends Controller
         // 現在の日時を取得
         $currentDateTime = now();
 
-        // delivery_fromとdelivery_toの値を取得
-        $deliveryFrom = $time->delivery_from;
-        $deliveryTo = $time->delivery_to;
+        //delivery_timesテーブルの該当レコード有無判定と必要データ取得
+        if(empty($time)){
+            $deliveryFrom = '2000-01-01 12:00:00';
+            $deliveryTo = '2000-01-02 12:00:00';  
+        }else{
+            // delivery_fromとdelivery_toの値を取得
+            $deliveryFrom = $time->delivery_from;
+            $deliveryTo = $time->delivery_to;                                          
+        }
+
 
         //alway_delivery_flgの値を取得
         $alwaysDeliveryFlag = $curriculum->alway_delivery_flg;
@@ -49,14 +56,14 @@ class DeliveryController extends Controller
         $progress = CurriculumProgress::where('curriculums_id', $curriculum->id)
                                         ->where('users_id', $user->id)
                                         ->first();
-                                        
-        //curriculum_progressのclear_flgを取得
-        if(is_null($progress)){
+
+        //curriculum_progressの該当レコード有無判定と必要データ取得
+        if(empty($progress)){
             $clearFlag = 0;
         }else{
-            $clearFlag = $progress->clear_flg;                                           
+            $clearFlag = (int) $progress->clear_flg;                                           
         }
-
+                                        
         //viewにもっていくデータまとめ
         $data = [
             'curriculum' => $curriculum,
@@ -75,29 +82,39 @@ class DeliveryController extends Controller
         return view('user.delivery', $data);
     }
 
-    //クリアフラグ更新処理
+    //クリアフラグ更新＆新規登録処理
     public function complete($complete_id) {
 
         // ユーザーのIDを取得
         $userId = Auth::id();
 
+        // 該当のレコード取得
+        $progress = CurriculumProgress::where('curriculums_id', $complete_id)
+                                        ->where('users_id', $userId)
+                                        ->first();
+                                        
         // トランザクション開始
         DB::beginTransaction();
 
         try {
-                // 新しい進行状況レコードを作成
-                CurriculumProgress::create([
+
+                if ($progress) {
+                    // レコードが存在する場合はクリアフラグを更新
+                    $progress->clear_flg = 1;
+                    $progress->save();
+                }else{
+                    // レコードが存在しない場合は新しいレコードを作成
+                    CurriculumProgress::create([
                     'curriculums_id' => $complete_id,
                     'users_id' => $userId,
                     'clear_flg' => 1,
-                ]);
+                    ]);
+                }
                 DB::commit();
             } catch (\Exception $e) {
                 DB::rollback();
                 return back();
             }
-    
-        // 他の処理（リダイレクトなど）が必要であればここで行う
     
         return redirect()->back();
     }

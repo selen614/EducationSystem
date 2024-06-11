@@ -83,12 +83,23 @@
 
 .article-li{
   margin-top: 10px;
+  display: flex;
 }
 
 .article-li:last-child{
   margin-bottom: 10px;
 }
 
+.date-area{
+  width: 25%;
+}
+
 .title-area{
-  margin-left: 30px;
+  margin-left: 12px;
+  width: 85%;
+  white-space: nowrap; /* 横幅のMAXに達しても改行しない */
+  overflow: hidden; /* ハミ出した部分を隠す */
+  text-overflow: ellipsis; /* 「…」と省略 */
+  -webkit-text-overflow: ellipsis; /* Safari */
+  -o-text-overflow: ellipsis; /* Opera */
 }

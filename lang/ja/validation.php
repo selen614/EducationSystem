@@ -79,7 +79,7 @@ return [
     'max'                  => [
         'numeric' => ':attributeには、:max以下の数字を指定してください。',
         'file'    => ':attributeには、:max KB以下のファイルを指定してください。',
-        'string'  => ':attributeは、:max文字以下入力してください。',
+        'string'  => ':max文字以下入力してください。',
         'array'   => ':attributeの項目は、:max個以下にしてください。',
     ],
     'mimes'                => ':attributeには、:valuesタイプのファイルを指定してください。',
@@ -133,6 +133,15 @@ return [
     'custom' => [
         'name_kana' => [
             'katakana' => 'カタカナで入力してください。',
+        ],
+        'email' => [
+            'no_fullwidth' => '半角文字で入力してください。',
+        ],
+        'password' => [
+            'no_fullwidth' => '半角文字で入力してください。',
+        ],
+        'password_confirmation' => [
+            'no_fullwidth' => '半角文字で入力してください。',
         ],
     ],
 

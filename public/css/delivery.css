@@ -81,7 +81,7 @@ iframe{
 
 
 
-.grade_area{
+.grade-area{
   color: #fff;
   margin-top:0.75rem;
   width: 180px;
@@ -95,8 +95,14 @@ iframe{
 .description_area{
   margin-top: 12px;
   text-align: left;
-}
-
-.description_title{
+  width: 70%;
+  }
+  
+.description-title{
   font-size: 2rem
+  }
+    
+.description-text{
+  margin-top: 12px;
+  line-height: 1.75em
 }
