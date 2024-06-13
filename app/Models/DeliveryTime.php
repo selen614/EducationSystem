@@ -4,15 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\DB;
 
-class Banner extends Model
+class DeliveryTime extends Model
 {
     use HasFactory;
-
-    protected $fillable = ['image'];
-
-     
-   
-    
+    public function curriculum()
+    {
+        return $this->belongsTo(Curriculum::class, 'curriculums_id');
+    }
 }

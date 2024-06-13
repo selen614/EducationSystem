@@ -58,23 +58,7 @@ class LoginController extends Controller
     {                                                       //追記
         $this->performLogout($request);                     //追記
         return redirect()->route('admin.auth.login');                 //追記
-    }    //追記
-
-    // public function login(LoginRequest $request)
-    // {
-    //     $credentials = $request->only('email', 'password');
-
-    //      // ログ出力を追加
-    //     //dd($credentials);
-
-    //     if (Auth::guard('admin')->attempt($credentials, $request->filled('remember'))) {
-    //         return redirect()->route('admin.admin.top');
-    //     }
-
-    //     return back()->withErrors([
-    //         'email' => 'アカウントが登録されていないか、パスワードが間違っています。',
-    //     ])->withInput();
- 
-    // }
+    }    
+    
 }
 

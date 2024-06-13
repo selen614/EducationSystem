@@ -17,5 +17,9 @@ class Authenticate extends Middleware
         if (! $request->expectsJson()) {
             return route('login');
         }
+        $user = Auth::user();
+        dd($user->toArray()); // ミドルウェアでユーザー情報をダンプ
+
+        return $next($request);
     }
 }

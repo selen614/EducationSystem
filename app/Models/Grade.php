@@ -4,15 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\DB;
 
-class Banner extends Model
+class Grade extends Model
 {
     use HasFactory;
-
-    protected $fillable = ['image'];
-
-     
-   
-    
+    public function curriculums()
+    {
+        return $this->hasMany(Curriculum::class);
+    }
 }

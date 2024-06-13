@@ -20,9 +20,19 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'name_kana',
         'email',
         'password',
+        'profile_image',
     ];
+    public function grade()
+        {
+            return $this->belongsTo(Grade::class, 'grade_id', 'id');
+        }
+
+    public function curriculumProgress() {
+        return $this->hasMany(CurriculumProgress::class, 'users_id', 'id');
+    }
 
     /**
      * The attributes that should be hidden for serialization.

@@ -5,6 +5,7 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use App\Models\Admin;
 use App\Rules\HalfWidth;
+
 class LoginRequest extends FormRequest
 {
     /**
