@@ -9,7 +9,10 @@ use App\Models\Admin;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\Auth;            //追記
+//use Illuminate\Support\Facades\Auth;            //追記
+use App\Http\Requests\RegisterRequest;
+use Illuminate\Support\Facades\DB;
+use Auth;
 
 class RegisterController extends Controller
 {
@@ -42,7 +45,7 @@ class RegisterController extends Controller
      *
      * @return void
      */
-    protected $redirectTo = '/admin/top';
+    protected $redirectTo ='/admin/top';
 
     public function __construct()
     {
@@ -74,10 +77,10 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         return Admin::create([
-            'name' => $request->name,
-            'kana' => $request->kana,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
+            'name' => $data['name'],
+            'kana' => $data['kana'],
+            'email' => $data['email'],
+            'password' => Hash::make($data['password']),
         ]);
     }
 

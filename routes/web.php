@@ -30,9 +30,12 @@ Auth::routes();
 
 Route::prefix('admin')->namespace('Admin')->name('admin.')->group(function () {
     Route::namespace('Auth')->group(function () {
-        Route::get('login', [LoginController::class, 'index'])->name('auth.login');
-        Route::post('login', [LoginController::class, 'login'])->name('auth.login.post');
-        Route::post('logout', [LoginController::class, 'logout'])->name('auth.logout');
+        // Route::get('login', [LoginController::class, 'index'])->name('auth.login');
+        // Route::post('login', [LoginController::class, 'login'])->name('auth.login.post');
+        // Route::post('logout', [LoginController::class, 'logout'])->name('auth.logout');
+        Route::get('login', [AdminLoginController::class, 'index'])->name('auth.login'); // 変更
+        Route::post('login', [AdminLoginController::class, 'login'])->name('auth.login.post'); // 変更
+        Route::post('logout', [AdminLoginController::class, 'logout'])->name('auth.logout'); // 変更
         Route::get('register', [RegisterController::class, 'index'])->name('auth.register'); 
         Route::post('register', [RegisterController::class, 'register'])->name('auth.register.store'); 
     });
@@ -46,12 +49,12 @@ Route::post('/banner_update/{id}', [BannerController::class, 'destroy'])->name('
 });
 
 Route::prefix('user')->namespace('User')->name('user.')->group(function () {
-    Route::middleware('auth')->group(function() {
+   // Route::middleware('auth')->group(function() {
 Route::get('curriculum_list', [CurriculumController::class, 'showCurriculumList'])->name('show.curriculum.list');
 Route::get('class_schedule', [CurriculumController::class, 'getClasses'])->name('getclasses');
-Route::get('top', [TopController::class, 'showTop'])->name('show.top');
+Route::get('delivery', [CurriculumController::class, 'showDelivery'])->name('show.delivery');//仮置き
 });
-});
+//});
 
 
 

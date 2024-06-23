@@ -24,14 +24,20 @@ class User extends Authenticatable
         'email',
         'password',
         'profile_image',
+        'grade_id',
+
     ];
     public function grade()
         {
             return $this->belongsTo(Grade::class, 'grade_id', 'id');
-        }
+    }
 
     public function curriculumProgress() {
         return $this->hasMany(CurriculumProgress::class, 'users_id', 'id');
+    }
+
+    public function curriculumclearcheck() {
+        return $this->hasMany(CurriculumClearCheck::class, 'users_id', 'id');
     }
 
     /**

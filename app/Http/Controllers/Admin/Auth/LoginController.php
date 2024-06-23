@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Auth;                       //修正
+namespace App\Http\Controllers\Admin\Auth;                      //修正
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider; //追記
@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\Admin;                       //追記
 use App\Http\Requests\LoginRequest;//追記
+use Illuminate\Support\Facades\DB;
 
 class LoginController extends Controller
 {

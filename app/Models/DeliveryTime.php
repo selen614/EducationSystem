@@ -10,6 +10,6 @@ class DeliveryTime extends Model
     use HasFactory;
     public function curriculum()
     {
-        return $this->belongsTo(Curriculum::class, 'curriculums_id');
+        return $this->belongsTo(Curriculum::class, 'curriculums_id', 'id');
     }
 }

@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Curriculum extends Model
 {
     use HasFactory;
+    protected $table = 'curriculums';
+    
     public function grade()
     {
         return $this->belongsTo(Grade::class);
@@ -15,6 +17,6 @@ class Curriculum extends Model
 
     public function deliveryTimes()
     {
-        return $this->hasMany(DeliveryTime::class, 'curriculums_id');
+        return $this->hasMany(DeliveryTime::class, 'curriculums_id', 'id');
     }
 }

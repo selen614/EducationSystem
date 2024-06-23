@@ -14,7 +14,13 @@
     <div id="left-panel">
         <div id="grade-buttons">
             @foreach($grades as $grade)
-                <div class="button" data-grade-id="{{ $grade->id }}">{{ $grade->name }}</div>
+                @php
+                    $isActive = $grade->id <= auth()->user()->grade_id; 
+                @endphp
+                <div class="button {{ $isActive ? '' : 'disabled' }}" 
+                     data-grade-id="{{ $grade->id }}">
+                    {{ $grade->name }}
+                </div>
             @endforeach
         </div>
     </div>

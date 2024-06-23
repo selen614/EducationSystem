@@ -8,8 +8,6 @@ document.addEventListener("DOMContentLoaded", function() {
     let currentYear = currentDate.getFullYear(); // 現在の年
     let currentMonth = currentDate.getMonth() + 1; // 現在の月
 
-    // 初期表示時の年月の表示を更新
-    //currentMonthSpan.textContent = `${currentYear}年${currentMonth}月`;
 
      // 初期表示時の年月の表示を更新
      updateMonthDisplay();
@@ -18,6 +16,7 @@ document.addEventListener("DOMContentLoaded", function() {
     gradeButtons.forEach(button => {
         button.addEventListener('click', () => {
             currentGradeId = button.getAttribute('data-grade-id');
+            console.log(currentGradeId)
             currentGradeSpan.textContent = button.textContent;
             loadClassesForGrade(currentGradeId, currentMonth);
         });
@@ -51,8 +50,18 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
     function loadClassesForGrade(gradeId, month) {
-        fetch(`/user/class_schedule?grade_id=${gradeId}&month=${month}`)
-            .then(response => response.json())
+        fetch(`class_schedule?grade_id=${gradeId}&month=${month}`,{
+            method: 'GET',
+            headers: {
+                "X-CSRF-TOKEN":$('meta[name="csrf-token"]').attr('content'),
+            },
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
             .then(data => {
                 classListContainer.innerHTML = '';
                 if (data.length > 0) {
@@ -64,6 +73,11 @@ document.addEventListener("DOMContentLoaded", function() {
                             <div>${classItemData.title}</div>
                             <div>${new Date(classItemData.delivery_times[0].delivery_from).toLocaleString()}</div>
                         `;
+                         // 配信画面遷移
+                         classItem.addEventListener('click', () => {
+                            const curriculumId = classItemData.id; 
+                            window.location.href = `/user/delivery/${curriculumId}`; // 遷移先のURLを設定
+                        });
                         classListContainer.appendChild(classItem);
                     });
                 } else {
@@ -71,8 +85,8 @@ document.addEventListener("DOMContentLoaded", function() {
                 }
             })
             .catch(error => {
-                console.error('Error fetching classes:', error);
-                classListContainer.innerHTML = '<p>授業データの取得に失敗しました。</p>';
+                console.error('Fetch error:', error);
+                classListContainer.innerHTML = '<p>データの取得に失敗しました。</p>';
             });
     }
 

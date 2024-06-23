@@ -1,6 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
+<a class="btn btn-link" href="{{ route('admin.auth.login') }}">
+    {{ __('ログインはこちら') }}
+</a>
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
