@@ -84,7 +84,7 @@ class RegisterController extends Controller
         ]);
     }
 
-    public function register(Request $request)
+    public function register(RegisterRequest $request)
     {
         $this->validator($request->all())->validate();
         $admin = $this->create($request->all());

@@ -3,16 +3,17 @@
 namespace App\Http\Controllers\Admin\Auth;                      //修正
 
 use App\Http\Controllers\Controller;
-use App\Providers\RouteServiceProvider; //追記
+use App\Providers\RouteServiceProvider; 
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth; 
 use Illuminate\Http\Request;
-use App\Models\Admin;                       //追記
-use App\Http\Requests\LoginRequest;//追記
+use App\Models\Admin;                       
+use App\Http\Requests\LoginRequest;
 use Illuminate\Support\Facades\DB;
 
 class LoginController extends Controller
 {
+    
     /*
     |--------------------------------------------------------------------------
     | Login Controller
@@ -60,6 +61,18 @@ class LoginController extends Controller
         $this->performLogout($request);                     //追記
         return redirect()->route('admin.auth.login');                 //追記
     }    
+    public function login(LoginRequest $request)  // LoginRequestを使用
+    {
+        $credentials = $request->only('email', 'password');
+
+        if (Auth::guard('admin')->attempt($credentials, $request->filled('remember'))) {
+            return redirect()->intended($this->redirectTo);
+        }
+
+        return back()->withErrors([
+            'email' => __('auth.failed'),
+        ])->withInput($request->only('email', 'remember'));
+    }
     
 }
 
