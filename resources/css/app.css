@@ -1,0 +1,218 @@
+/* 統一 */
+.back_link {
+    display: inline-block;
+    margin: 1rem 0;
+    color: #333;
+    text-decoration: none;
+}
+
+.back_link:hover {
+    text-decoration: underline;
+}
+
+a {
+    display: inline-block;
+    margin: 1rem 0;
+    color: #333;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/*授業進捗画面 user/curriculum_progress.blade.php*/
+.user_curriculumProgress_profile {
+    display: flex;
+    align-items: center;
+    margin: 1rem 0;
+}
+
+.user_curriculumProgress_profile img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-right: 1rem;
+}
+
+.user_curriculumProgress_info p {
+    margin: 0.5rem 0;
+}
+
+.user_curriculumProgress_grades {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.user_curriculumProgress_grade {
+    width: 30%;
+    margin-bottom: 2rem;
+}
+
+.user_curriculumProgress_grade h2 {
+    margin-bottom: 0.5rem;
+}
+
+.user_curriculumProgress_title {
+    margin-bottom: 0.5rem;
+}
+
+.user_curriculumProgress_title a {
+    text-decoration: none;
+    color: #333;
+}
+
+.user_curriculumProgress_title a:hover {
+    text-decoration: underline;
+}
+
+/*お知らせ画面 user/article.blade.php */
+.user_article_notification {
+    padding: 1rem;
+    background-color: #f9f9f9;
+    margin: 1rem;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.user_article_date {
+    margin: 0.5rem 0;
+    color: #666;
+}
+
+.user_article_title {
+    margin: 0.5rem 0;
+}
+
+.user_article_content {
+    margin-top: 1rem;
+    white-space: pre-wrap;
+}
+
+/* お知らせ画面　user/profile.edit.blade.php */
+#user_profileEdit_title {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+#user_profileEdit_form {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 1rem;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#user_profileEdit_image_section {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+#user_profileEdit_image_label {
+    margin-bottom: 0.5rem;
+}
+
+#user_profileEdit_image {
+    display: block;
+    margin: 0 auto 1rem;
+}
+
+#user_profileEdit_image_input {
+    display: block;
+    margin: 0 auto;
+}
+
+#user_profileEdit_image_input_label {
+    display: block;
+    margin: 1rem auto;
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #f0f0f0;
+    text-align: center;
+}
+
+.user_profileEdit_form_group {
+    margin-bottom: 1rem;
+}
+
+.user_profileEdit_form_group label {
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.user_profileEdit_form_group input {
+    width: 100%;
+    padding: 0.5rem;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+#user_profileEdit_password_link {
+    display: inline-block;
+    margin-top: 0.5rem;
+    color: #007bff;
+    text-decoration: none;
+}
+
+#user_profileEdit_password_link:hover {
+    text-decoration: underline;
+}
+
+#user_profileEdit_submit {
+    display: block;
+    width: 100%;
+    padding: 0.75rem;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 1rem;
+}
+
+#user_profileEdit_submit:hover {
+    background-color: #0056b3;
+}
+
+/* パスワード変更画面 password.edit.blade.php */
+#user_passwordEdit {
+    margin-top: 20px;
+}
+
+#user_passwordEdit h2 {
+    margin-bottom: 10px;
+}
+
+#user_passwordEdit div {
+    margin-bottom: 10px;
+}
+
+#user_passwordEdit label {
+    display: inline-block;
+    width: 120px;
+}
+
+#user_passwordEdit input[type="password"] {
+    width: 200px;
+}
+
+#user_passwordEdit_submit {
+    display: block;
+    width: 100%;
+    padding: 0.75rem;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 1rem;
+}
+
+#user_passwordEdit_submit:hover {
+    background-color: #0056b3;
+}
