@@ -22,16 +22,18 @@ class CurriculumController extends Controller
     }
     public function getClasses(Request $request)
     {
-        $gradeId = $request->query('grade_id');
-        $month = $request->query('month');
+    $gradeId = $request->query('grade_id');
+    $month = $request->query('month');
 
-        $classes = Curriculum::where('grade_id', $gradeId)
-            ->whereHas('deliveryTimes', function ($query) use ($month) {
-                $query->whereMonth('delivery_from', $month);
-            })
-            ->with('deliveryTimes')
-            ->get();
+    $classes = Curriculum::where('grade_id', $gradeId)
+        ->whereHas('deliveryTimes', function ($query) use ($month) {
+            $query->whereMonth('delivery_from', '<=', $month)
+              ->whereMonth('delivery_to', '>=', $month)
+              ->orWhere('alway_delivery_flg', 1);
+        })
+        ->with('deliveryTimes')
+        ->get();
 
-        return response()->json($classes);
+    return response()->json($classes);
     }
 }

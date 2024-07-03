@@ -1,13 +1,13 @@
 
 document.addEventListener('DOMContentLoaded', function() {
-    //const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+    // バナー画像のプレビュー機能を追加
     document.querySelectorAll('.banner-input').forEach(function(input) {
         input.addEventListener('change', function(e) {
             const file = e.target.files[0];
             if (file) {
                 const reader = new FileReader();
                 reader.onload = function(e) {
-                    const preview = input.closest('.banner-item').querySelector(input.dataset.preview);
+                    const preview = input.closest('.banner-item').querySelector('.banner-preview');
                     preview.src = e.target.result;
                 }
                 reader.readAsDataURL(file);
@@ -17,24 +17,34 @@ document.addEventListener('DOMContentLoaded', function() {
 //追加ボタン    
 document.getElementById('addBanner').addEventListener('click', function() {
     var newBannerDiv = document.createElement('div');
-    newBannerDiv.classList.add('form-group');
+    newBannerDiv.classList.add('form-group', 'banner-item');
     
     var fileInput = document.createElement('input');
     fileInput.type = 'file';
     fileInput.name = 'newBanner[]';
-    fileInput.classList.add('form-control');
+    fileInput.classList.add('form-control', 'banner-input');
     fileInput.addEventListener('change', function(event) {
         var reader = new FileReader();
         reader.onload = function(e) {
-            var img = document.createElement('img');
+            var img =document.createElement('img');
             img.src = e.target.result;
             img.style.maxWidth = '200px';
+            img.classList.add('banner-preview');
             newBannerDiv.appendChild(img);
         };
         reader.readAsDataURL(event.target.files[0]);
     });
     
+    var deleteButton = document.createElement('button');
+        deleteButton.type = 'button';
+        deleteButton.classList.add('btn', 'btn-danger', 'mt-2', 'deleteBanner');
+        deleteButton.textContent = '削除';
+        deleteButton.addEventListener('click', function() {
+            newBannerDiv.remove();
+    });
+
     newBannerDiv.appendChild(fileInput);
+    newBannerDiv.appendChild(deleteButton);
     document.getElementById('newBanners').appendChild(newBannerDiv);
 });
 
@@ -52,7 +62,6 @@ document.getElementById('addBanner').addEventListener('click', function() {
                      
                      headers: {
                          "X-CSRF-TOKEN":$('meta[name="csrf-token"]').attr('content'),
-                         //'Content-Type': 'application/json',
                          
                     },
                  })

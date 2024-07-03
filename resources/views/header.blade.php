@@ -49,20 +49,14 @@
                             </div>
                         @endif
                     @else
-                        <div class="nav-item">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                {{ Auth::user()->name }}
+                    <div class="nav-item d-flex align-items-center">
+                            <span class="nav-link">{{ Auth::user()->name }}</span>
+                            <a class="nav-link" href="{{ route('admin.auth.logout') }}"
+                               onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                {{ __('Logout') }}
                             </a>
-
-                            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ route('admin.auth.logout') }}"
-                                   onclick="event.preventDefault();
-                                                 document.getElementById('logout-form').submit();">
-                                    {{ __('Logout') }}
-                                </a>
-
-                                <form id="logout-form" action="{{ route('admin.auth.logout') }}" method="POST" class="d-none">
-                                    @csrf
+                            <form id="logout-form" action="{{ route('admin.auth.logout') }}" method="POST" class="d-none">
+                                @csrf
                                 </form>
                             </div>
                         </div>
