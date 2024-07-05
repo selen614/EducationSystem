@@ -4,6 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use App\Rules\HalfWidth;
+use App\Rules\Katakana;
 
 class RegisterRequest extends FormRequest
 {
@@ -26,7 +27,7 @@ class RegisterRequest extends FormRequest
     {
         return [
             'name' => 'required | max:255',
-            'kana' => 'required | max:255| katakana' ,
+            'kana' => ['required' , 'max:255',new Katakana],
             'email' => ['required' , 'max:255',new HalfWidth],
             'password' => ['required','min:8','max:255',new HalfWidth, 'confirmed'],
             'password_confirmation' => ['required','min:8','max:255',new HalfWidth],
