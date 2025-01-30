@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /* 統一 */
 .back_link {
     display: inline-block;
@@ -216,3 +217,8 @@ a:hover {
 #user_passwordEdit_submit:hover {
     background-color: #0056b3;
 }
+=======
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+>>>>>>> 526220b (ファーストコミット)

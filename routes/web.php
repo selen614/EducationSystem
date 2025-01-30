@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+<<<<<<< HEAD
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\User\ArticleController as UserArticleController;
 use App\Http\Controllers\User\ProgressController;
@@ -19,10 +20,13 @@ use App\Http\Controllers\Admin\ArticleController as AdminArticleController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+=======
+>>>>>>> 526220b (ファーストコミット)
 
 Route::get('/', function () {
     return view('welcome');
 });
+<<<<<<< HEAD
 
 Route::prefix('user')->namespace('User')->name('user.')->group(function () {
     Route::get('/article/{id}', 'ArticleController@showArticle')->name('show.article');
@@ -45,3 +49,5 @@ Route::prefix('admin')->namespace('Admin')->name('admin.')->group(function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+=======
+>>>>>>> 526220b (ファーストコミット)

@@ -1,3 +1,7 @@
 *
+<<<<<<< HEAD
+=======
+!private/
+>>>>>>> 526220b (ファーストコミット)
 !public/
 !.gitignore
